@@ -12,12 +12,40 @@
   <script src="https://unpkg.com/react-dom-factories/index.js"></script>
   <script src="https://unpkg.com/prop-types/prop-types.js"></script>
   <script type="text/babel">
+    function Loading() {
+      return (
+        <h3>loading</h3>
+      );
+    }
+
+    function Error(props) {
+      return(
+        <p>Pokémon {props.detail}</p>
+      );
+    }
+
     function PokemonDisplay(props) {
       return (
         <figure>
           <PokemonIMG name={props.name} image={props.image} />
           <PokemonName name={props.name} />
         </figure>
+      );
+    }
+
+    function PokemonTypes(props) {
+      return(
+        <ul>
+          {props.types
+            .map((type, index) => <PokemonType type={type.type.name} key={index} />)
+          }
+        </ul>
+      );
+    }
+
+    function PokemonType(props) {
+      return(
+        <li>{props.type}</li>
       );
     }
 
@@ -76,52 +104,68 @@
         super(props);
 
         this.state = {
+          loading: true,
           id: 1,
-          name: "",
-          image: "",
+          name: '',
+          image: '',
+          types: [],
           level: 0,
           abilities: [],
           moves: [],
-          error: true,
+          error: '',
         };
 
         this.handleClick = this.handleClick.bind(this);
-        this.handleNumber = this.handleNumber.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
       };
 
-      componentDidMount() {
+      componentWillMount() {
         this.getPokemon(this.state.id);
+      }
 
-        document.getElementById('prev').addEventListener('click', this.handleClick);
-        document.getElementById('next').addEventListener('click', this.handleClick);
-
-        document.getElementById('pokemonID').addEventListener('change', this.handleNumber);
+      componentDidMount() {
+        // document.getElementById('prev').addEventListener('click', this.handleClick);
+        // document.getElementById('next').addEventListener('click', this.handleClick);
       };
 
       render(){
+        if (this.state.loading) {
+          return(
+            <Loading />
+          );
+        }
+
         return (
           <section>
+            {this.state.error &&
+              <Error detail={this.state.error} />
+            }
             <h1>{this.props.title}</h1>
             <PokemonDisplay name={this.state.name} image={this.state.image} />
-            <Button id={this.props.prev} legend={this.props.prevName} />
-            <input type="text" name="pokemonID" id="pokemonID" placeholder="Escribe el ID del Pokémon que quieres buscar" onChange={this.handleNumber} />
-            <Button id={this.props.next} legend={this.props.nextName} />
-            <h2>{this.props.abilitiesTitle}</h2>
+            <h2>Tipo:</h2>
+            <PokemonTypes types={this.state.types} />
+            <Button id={this.props.prev} legend={this.props.prevName} onClick={this.handleClick} />
+            <form method="GET">
+              <input type="text" id="pokemonID" placeholder="Escribe el ID del Pokémon que quieres buscar" />
+              <button type="submit" id="submit" onClick={this.handleSearch}>Buscar</button>
+            </form>
+            <Button id={this.props.next} legend={this.props.nextName} onClick={this.handleClick} />
+            <h3>{this.props.abilitiesTitle}</h3>
             <PokemonAbilities abilities={this.state.abilities} />
-            <h3>{this.props.movesTitle}</h3>
+            <h4>{this.props.movesTitle}</h4>
             <PokemonMoves moves={this.state.moves} />
           </section>
         );
       };
 
       componentWillUnmount() {
-        document.getElementById('prev').removeEventListener('click');
-        document.getElementById('next').removeEventListener('click');
-        document.getElementById('pokemonID').removeEventListener('change');
+        // document.getElementById('prev').removeEventListener('click');
+        // document.getElementById('next').removeEventListener('click');
       }
 
       handleClick = (event) => {
         event.preventDefault();
+        console.log('click');
 
         let pokemonID = (event.target.id == 'prev') ? this.state.id-- : this.state.id++;
         pokemonID = (pokemonID <= 0) ? 1 : pokemonID;
@@ -129,9 +173,9 @@
         this.getPokemon(pokemonID);
       }
 
-      handleNumber = (event) => {
+      handleSearch = (event) => {
         event.preventDefault();
-        let pokemonID = event.currentTarget.value;
+        let pokemonID = document.getElementById('pokemonID').value;
 
         console.log(pokemonID);
         this.getPokemon(pokemonID);
@@ -140,16 +184,32 @@
       async getPokemon(id=null) {
         const pokemonID = id || this.state.id;
 
+        this.setState({
+          loading: true,
+        });
+
         try {
           const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonID}/`);
           const pokemon = await response.json();
+          if (pokemon.detail) {
+            this.setState((prevState) => {
+              return {
+                loading: false,
+                error: pokemon.detail,
+              };
+            });
+
+            return false;
+          }
 
           console.log( pokemon );
           this.setState((prevState) => {
             return {
+              loading: false,
               id: pokemon.id,
               name: pokemon.name,
               image: pokemon.sprites.front_default,
+              types: pokemon.types,
               level: pokemon.base_experience,
               abilities: pokemon.abilities,
               moves: pokemon.moves,
@@ -158,29 +218,31 @@
         } catch (e) {
           this.setState((prevState) => {
             return {
-              error: true,
+              loading: false,
+              error: pokemon.detail,
             };
           });
-        } finally {
-
         }
       }
     }
 
     Pokemon.defaultProps = {
+      loading: true,
       title: 'Nombre del Pokémon',
       prev: 'prev',
       next: 'next',
-      prevName: 'Siguiente',
-      nextName: 'Anterior',
+      prevName: 'Anterior',
+      nextName: 'Siguiente',
       abilitiesTitle: 'Habilidades disponibles',
       movesTitle: 'Movimientos disponibles',
     }
 
     Pokemon.propTypes = {
+      loading: PropTypes.bool,
       id: PropTypes.number,
       name: PropTypes.string,
       image: PropTypes.string,
+      types: PropTypes.arrayOf(PropTypes.object),
       level: PropTypes.number,
       abilities: PropTypes.arrayOf(PropTypes.object),
       moves: PropTypes.arrayOf(PropTypes.object),
@@ -188,6 +250,7 @@
       next: PropTypes.string,
       prevName: PropTypes.string,
       nextName: PropTypes.string,
+      error: PropTypes.string,
     };
 
     ReactDOM.render(
