@@ -141,7 +141,7 @@
         const pokemonID = id || this.state.id;
 
         try {
-          const response = await fetch(`http://pokeapi.co/api/v2/pokemon/${pokemonID}/`);
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonID}/`);
           const pokemon = await response.json();
 
           console.log( pokemon );
