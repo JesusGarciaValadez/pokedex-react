@@ -18,23 +18,21 @@ const config = {
         exclude: /node_modules/,
         loader: 'eslint-loader',
       },
-    ],
-    loaders: [
       {
         test: /\.json$/,
         loader: 'json-loader',
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
         exclude: /(node_modules)/,
+        loader: 'babel-loader',
         query: {
           presets: ['env', 'react'],
           plugins: ['transform-es2015-modules-commonjs'],
           env: {
             production: {
               plugins: ['transform-regenerator', 'transform-runtime'],
-              presets: ['es2015'],
+              presets: ['env'],
             },
             development: {
               plugins: ['transform-es2015-modules-commonjs'],

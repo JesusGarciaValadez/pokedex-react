@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import PropTypes from 'prop-types';
 
 import Error from './error/components/Error';
@@ -96,9 +96,9 @@ class Pokemon extends React.Component {
   }
 
   render() {
-    if (this.state.loading) {
-      return <Loading />;
-    }
+    // if (this.state.loading) {
+    //   return <Loading />;
+    // }
 
     return (
       <section>
@@ -144,7 +144,7 @@ Pokemon.propTypes = {
   movesTitle: PropTypes.string,
 };
 
-ReactDOM.render(
+render(
   <Pokemon />,
   document.getElementById('pokemon'),
 );
