@@ -7,11 +7,9 @@ function PokemonTypes(props) {
   return (
     <ul>
       {props.types
-        .map(
-          (type) => {
-            return <PokemonType type={type.type.name} key={type.type.name} />;
-          },
-        )
+        .map(type => (
+          <PokemonType type={type.type.name} key={type.type.name} />
+        ))
       }
     </ul>
   );
