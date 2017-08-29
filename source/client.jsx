@@ -77,7 +77,7 @@ class Pokemon extends React.Component {
     return true;
   }
 
-  handleClick = (event) => {
+  handleClick(event) {
     event.preventDefault();
     console.log('click');
 
@@ -87,7 +87,7 @@ class Pokemon extends React.Component {
     this.getPokemon(pokemonID);
   }
 
-  handleSearch = (event) => {
+  handleSearch(event) {
     event.preventDefault();
     const pokemonID = document.getElementById('pokemonID').value;
 
@@ -97,9 +97,7 @@ class Pokemon extends React.Component {
 
   render() {
     if (this.state.loading) {
-      return (
-        <Loading />
-      );
+      return <Loading />;
     }
 
     return (

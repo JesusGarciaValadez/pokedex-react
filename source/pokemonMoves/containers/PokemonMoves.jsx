@@ -7,11 +7,9 @@ function PokemonMoves(props) {
   return (
     <ul>
       {props.moves
-        .map(
-          (move) => {
-            return (<PokemonMove move={move.move.name} key={move.move.name} />);
-          },
-        )
+        .map(move => (
+          <PokemonMove move={move.move.name} key={move.move.name} />
+        ))
       }
     </ul>
   );

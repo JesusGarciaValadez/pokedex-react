@@ -7,11 +7,9 @@ function PokemonAbilities(props) {
   return (
     <ul>
       {props.abilities
-        .map(
-          (ability) => {
-            return <PokemonAbility ability={ability.ability.name} key={ability.ability.name} />;
-          },
-        )
+        .map(ability => (
+          <PokemonAbility ability={ability.ability.name} key={ability.ability.name} />
+        ))
       }
     </ul>
   );
