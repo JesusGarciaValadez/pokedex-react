@@ -6,8 +6,8 @@ const config = {
   entry: './source/client.jsx',
   output: {
     filename: 'app.js',
-    path: path.resolve(__dirname, '../built/statics'),
-    publicPath: process.env.NODE_ENV === 'production',
+    path: path.resolve(__dirname, '../build/statics'),
+    publicPath: process.env.NODE_ENV === 'production'
       ? 'https://-sfs.now.sh'
       : 'http://localhost:3001',
   },
@@ -29,7 +29,7 @@ const config = {
         loader: 'babel-loader',
         exclude: /(node_modules)/,
         query: {
-          presets: ['es2015', 'es2016', 'es2017', 'react'],
+          presets: ['env', 'react'],
           plugins: ['transform-es2015-modules-commonjs'],
           env: {
             production: {
@@ -61,7 +61,7 @@ const config = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
       },
     }),
-    new webpack.optimize.OccurenceOrderPlugin(true),
+    new webpack.optimize.OccurrenceOrderPlugin(true),
     new ExtractTextPlugin('../statics/styles.css'),
   ],
 };

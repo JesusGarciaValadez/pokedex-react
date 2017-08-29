@@ -9,22 +9,40 @@
 	],
 "creatorBuild": "25900",
 "files": {
+	"\/.eslintrc": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/build\/.eslintrc",
+		"oF": 0
+		},
 	"\/.gitignore": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/.gitignore",
+		"oAP": "\/build\/.gitignore",
+		"oF": 0
+		},
+	"\/build": {
+		"ft": 65536,
+		"oA": 1,
+		"oAP": "\/build\/build",
 		"oF": 0
 		},
 	"\/index.html": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/index.html",
+		"oAP": "\/build\/index.html",
+		"oF": 0
+		},
+	"\/node_modules": {
+		"ft": 65536,
+		"oA": 2,
+		"oAP": "\/build\/node_modules",
 		"oF": 0
 		},
 	"\/package-lock.json": {
 		"ft": 524288,
 		"oA": 1,
-		"oAP": "\/package-lock-min.json",
+		"oAP": "\/build\/package-lock-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
@@ -32,28 +50,158 @@
 	"\/package.json": {
 		"ft": 524288,
 		"oA": 1,
-		"oAP": "\/package-min.json",
+		"oAP": "\/build\/package-min.json",
 		"oF": 0,
 		"oO": 0,
 		"oS": 1
 		},
-	"\/webpack.config.js": {
+	"\/source\/client.jsx": {
 		"ft": 64,
-		"ma": 0,
+		"ma": 1,
+		"mi": 1,
+		"oA": 1,
+		"oAP": "\/build\/min\/client-min.js",
+		"oF": 1,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/error\/components\/Error.jsx": {
+		"ft": 64,
+		"ma": 1,
 		"mi": 1,
 		"oA": 0,
-		"oAP": "\/min\/webpack.config-min.js",
+		"oAP": "\/build\/error\/components\/Error-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/loading\/components\/Loading.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/loading\/components\/Loading-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/pokemonAbilities\/components\/PokemonAbility.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/pokemonAbilities\/components\/PokemonAbility-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/pokemonAbilities\/containers\/PokemonAbilities.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/pokemonAbilities\/containers\/PokemonAbilities-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/pokemonDisplay\/components\/PokemonIMG.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/pokemonDisplay\/components\/PokemonIMG-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/pokemonDisplay\/components\/PokemonName.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/pokemonDisplay\/components\/PokemonName-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/pokemonDisplay\/containers\/PokemonDisplay.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/pokemonDisplay\/containers\/PokemonDisplay-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/pokemonMoves\/components\/PokemonMove.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/pokemonMoves\/components\/PokemonMove-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/pokemonMoves\/containers\/PokemonMoves.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/pokemonMoves\/containers\/PokemonMoves-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/pokemonTypes\/components\/PokemonType.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/pokemonTypes\/components\/PokemonType-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/pokemonTypes\/containers\/PokemonTypes.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/pokemonTypes\/containers\/PokemonTypes-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/source\/shared\/components\/Button.jsx": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/shared\/components\/Button-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/webpack.config.js": {
+		"ft": 64,
+		"ma": 1,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/build\/min\/webpack.config-min.js",
 		"oF": 0,
 		"sC": 1,
 		"tS": 0
 		},
 	"\/webpack\/webpack.client.config.js": {
 		"ft": 64,
-		"ma": 0,
+		"ma": 1,
 		"mi": 1,
-		"oA": 0,
-		"oAP": "\/webpack\/min\/webpack.client.config-min.js",
-		"oF": 0,
+		"oA": 1,
+		"oAP": "\/build\/webpack\/min\/webpack.client.config-min.js",
+		"oF": 1,
 		"sC": 1,
 		"tS": 0
 		}
@@ -81,7 +229,7 @@
 	"babelCustomPresetsList": "",
 	"babelInsertModuleIDs": 0,
 	"babelModuleID": "",
-	"babelNoComments": 0,
+	"babelNoComments": 1,
 	"babelPlugins": {
 		"async-generator-functions": {
 			"active": 0
@@ -312,7 +460,7 @@
 			"active": 0
 			}
 		},
-	"babelPresetType": 193,
+	"babelPresetType": 225,
 	"babelRetainLines": 0,
 	"bowerAbbreviatedPath": "bower_components",
 	"bowerAutoCreateInfoFile": 1,
@@ -321,7 +469,7 @@
 	"bowerSaveDevDependencies": 0,
 	"bowerUseExactVersion": 0,
 	"browserRefreshDelay": 0,
-	"buildFolderActive": 0,
+	"buildFolderActive": 1,
 	"buildFolderName": "build",
 	"cleanBuild": 1,
 	"coffeeLintFlags2": {
@@ -1870,8 +2018,8 @@
 		"autoOutputPathRelativePath": "\/min",
 		"autoOutputPathReplace1": "",
 		"autoOutputPathReplace2": "",
-		"autoOutputPathStyle": 2,
-		"createSourceMap": 0,
+		"autoOutputPathStyle": 0,
+		"createSourceMap": 1,
 		"minifyOutput": 1,
 		"syntaxCheckerStyle": 1,
 		"transpilerStyle": 0
@@ -2207,7 +2355,7 @@
 			}
 		},
 	"uglifyReservedNamesString": "$",
-	"websiteRelativeRoot": ""
+	"websiteRelativeRoot": "\/build"
 	},
 "settingsFileVersion": "3"
 }
